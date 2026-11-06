@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ingram US Non-Traded BDC Index | Ingram Ltd</title>
+  <meta name="description" content="Index performance, constituents and methodology for the Ingram US Non-Traded BDC Index.">
+  <meta property="og:title" content="Ingram US Non-Traded BDC Index">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to content</a>
+
+<div class="utility-bar">
+  <div class="container utility-bar__inner">
+    <span>United Kingdom</span>
+    <button type="button" class="utility-bar__investor" id="investorTypeBtn">Professional investors</button>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="index.html" class="logo" aria-label="Ingram Ltd home">
+      <img src="img/logo.svg" alt="" width="28" height="28">
+      <span>Ingram</span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="#overview" aria-current="page">Indices</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#documents">Research</a>
+      <a href="#about">About us</a>
+    </nav>
+    <a href="#contact" class="btn btn--outline site-header__cta">Contact us</a>
+  </div>
+</header>
+
+<main id="content">
+
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#overview">Indices</a></li>
+      <li aria-current="page">US Non-Traded BDC Index</li>
+    </ol>
+  </div>
+
+  <section class="index-header" id="overview">
+    <div class="container">
+      <p class="index-header__type">Private credit index</p>
+      <h1>Ingram US Non-Traded BDC Index</h1>
+      <p class="index-header__desc">Tracks the total return of five of the largest US non-traded business development companies (BDCs), using month-end NAVs and distributions reported in SEC filings.</p>
+
+      <dl class="key-stats" id="keyStats">
+        <!-- filled from data/bdc2.js -->
+      </dl>
+      <p class="as-of" id="asOfTop"></p>
+    </div>
+  </section>
+
+  <nav class="tabs" aria-label="Index sections">
+    <div class="container tabs__inner">
+      <a href="#overview" class="is-active">Overview</a>
+      <a href="#performance">Performance</a>
+      <a href="#risk">Risk</a>
+      <a href="#constituents">Constituents</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#documents">Documents</a>
+    </div>
+  </nav>
+
+  <section class="section" id="performance">
+    <div class="container">
+      <div class="section__head">
+        <h2>Performance</h2>
+        <div class="range" role="group" aria-label="Chart period">
+          <button type="button" data-range="12">1Y</button>
+          <button type="button" data-range="36">3Y</button>
+          <button type="button" data-range="all" class="is-active">Since inception</button>
+        </div>
+      </div>
+
+      <h3 class="chart-title">Growth of hypothetical 10,000</h3>
+      <div class="chart" id="growthChart"></div>
+      <p class="chart-legend">
+        <span class="swatch swatch--index"></span>Index (total return)
+        <span class="swatch swatch--ds"></span>De-smoothed
+      </p>
+
+      <div class="grid-2">
+        <div>
+          <h3>Cumulative and annualised returns (%)</h3>
+          <div class="table-wrap"><table class="data-table" id="periodTable"></table></div>
+        </div>
+        <div>
+          <h3>Calendar year returns (%)</h3>
+          <div class="table-wrap"><table class="data-table" id="yearTable"></table></div>
+        </div>
+      </div>
+
+      <h3>Monthly returns (%)</h3>
+      <div class="table-wrap"><table class="data-table data-table--compact" id="monthTable"></table></div>
+      <p class="footnote">Total return with distributions reinvested at NAV. 2023 covers May to December. Figures for the current year are year to date. Past performance is not a reliable indicator of future results.</p>
+    </div>
+  </section>
+
+  <section class="section section--grey" id="risk">
+    <div class="container grid-2">
+      <div>
+        <h2>Risk</h2>
+        <p>Non-traded BDCs value most of their loans using appraisal-based methods, which tend to adjust gradually. As a result, reported monthly returns are strongly autocorrelated and reported volatility understates the risk of the underlying assets.</p>
+        <p>We publish a de-smoothed series alongside the index, using the Geltner (1993) AR(1) adjustment, so users can see both views.</p>
+      </div>
+      <div class="table-wrap"><table class="data-table" id="riskTable"></table></div>
+    </div>
+  </section>
+
+  <section class="section" id="constituents">
+    <div class="container">
+      <h2>Constituents</h2>
+      <p class="as-of" id="asOfCons"></p>
+      <div class="table-wrap"><table class="data-table" id="consTable"></table></div>
+      <p class="footnote">Distribution yield: latest monthly Class I distribution, annualised, divided by NAV per share. Source: fund filings on SEC EDGAR.</p>
+    </div>
+  </section>
+
+  <section class="section section--grey" id="methodology">
+    <div class="container">
+      <h2>Methodology summary</h2>
+      <table class="facts-table">
+        <tr><th scope="row">Universe</th><td>Perpetual-life, continuously offered US non-traded BDCs</td></tr>
+        <tr><th scope="row">Number of constituents</th><td id="factCount">5</td></tr>
+        <tr><th scope="row">Share class</th><td>Class I</td></tr>
+        <tr><th scope="row">Weighting</th><td>Equal weight</td></tr>
+        <tr><th scope="row">Return type</th><td>Total return, distributions reinvested at NAV</td></tr>
+        <tr><th scope="row">Calculation frequency</th><td>Monthly</td></tr>
+        <tr><th scope="row">Review</th><td>Quarterly. Funds are removed on listing, merger or wind-down</td></tr>
+        <tr><th scope="row">Base date and value</th><td id="factBase"></td></tr>
+        <tr><th scope="row">Currency</th><td>USD</td></tr>
+        <tr><th scope="row">Data sources</th><td>Form 8-K, 424B3, 10-Q and 10-K filings (SEC EDGAR)</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="documents">
+    <div class="container">
+      <h2>Documents</h2>
+      <ul class="doc-list">
+        <li><a href="docs/methodology.pdf">Index methodology</a><span>PDF</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--grey" id="about">
+    <div class="container grid-2">
+      <div>
+        <h2>About Ingram</h2>
+        <p>Ingram Ltd is a London-based index and research business focused on private credit. We build transparent, rules-based indices from public filings.</p>
+      </div>
+      <div id="contact">
+        <h2>Contact</h2>
+        <p>For data access, licensing or the full methodology:<br>
+        <a href="mailto:hello@ingram.example">ing.matteo.mi@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__cols">
+      <div>
+        <h4>Indices</h4>
+        <a href="#overview">US Non-Traded BDC Index</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="#methodology">Methodology</a>
+        <a href="#documents">Documents</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#about">About us</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <p><strong>Important information.</strong> This website is for information purposes only. The Ingram US Non-Traded BDC Index is a hypothetical index calculated by Ingram Ltd from publicly available SEC filings. It is not an investment product and nothing on this website constitutes an offer, solicitation, investment recommendation or financial promotion. Past performance is not a reliable indicator of future results.</p>
+      <p>&copy; <span id="year"></span> Ingram Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="investorModal" hidden>
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h2 id="modalTitle">Welcome to Ingram</h2>
+    <p>Please confirm you have read the important information below before continuing.</p>
+    <p class="modal__small">The information on this website is intended for professional investors and is provided for information only. It is not an offer or solicitation to buy or sell any investment.</p>
+    <button type="button" class="btn btn--solid" id="investorAccept">I understand, continue</button>
+  </div>
+</div>
+
+<script src="data/bdc2.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
